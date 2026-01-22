@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesan Spesial Untukmu</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body class="special-page-body">
+
+    <div class="special-container">
+        <div class="text-section fade-in-left">
+            <p>
+                "Setiap tahun di ulang tahunmu, aku diingatkan betapa hebatnya kamu sebagai seorang teman. 
+                Terima kasih telah menjadi dirimu sendiri."
+            </p>
+            <a href="/spesial_2" class="btn-next-moment">Moment Selanjutnya </a>
+            </div>
+        </div>
+
+        <div class="photo-section fade-in-right">
+            <div class="big-circle-frame">
+                <img src="{{ url_for('static', filename=foto) }}" alt="Maba nih boss">
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clara's Birthday Challenge!</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content-container">
+        
+        <div id="intro-section" class="{% if error %}hidden{% endif %}">
+            <h1 class="main-title">Clara<br>Birthday</h1>
+            <h3 class="sub-title">Save the date</h3>
+            
+            <p class="body-text">
+                Ada yang ulang tahun nih.. tebak tebakan dulu gak sih mwehehehe. 
+                Panggilan kamu saat mode serius dan garang apa hayoo?
+            </p>
+
+            <button onclick="showForm()" class="btn-mulai">Jawab Tebakannya! 🎁</button>
+        </div>
+
+        <div id="form-section" class="{% if not error %}hidden{% endif %}">
+            <h2 class="sub-title">Tulis Jawabannya:</h2>
+            
+            <form action="/" method="POST" class="{{ 'shake' if error else '' }}">
+                <input type="text" name="jawaban" class="input-jawaban" placeholder="Ketikan di sini..." autocomplete="off" required>
+                
+                {% if error %}
+                <p class="error-text">Tetott! Salah wlee 😜 hayoo ingat lagi dan Coba lagi!</p>
+                {% endif %}
+
+                <div class="button-group">
+                    <button type="submit" class="btn-submit">Kirim Jawaban 🚀</button>
+                    <button type="button" onclick="hideForm()" class="btn-batal">Batal</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+    <script>
+        function showForm() {
+            document.getElementById('intro-section').style.display = 'none';
+            document.getElementById('form-section').style.display = 'block';
+            // Efek animasi masuk
+            document.getElementById('form-section').classList.add('fade-in');
+        }
+
+        function hideForm() {
+            document.getElementById('form-section').style.display = 'none';
+            document.getElementById('intro-section').style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>
