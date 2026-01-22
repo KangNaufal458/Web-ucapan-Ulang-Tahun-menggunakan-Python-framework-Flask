@@ -1,0 +1,500 @@
+/* --- 1. RESET & SETTINGAN DASAR --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* Background Wallpaper */
+    /* Pastikan nama file ini BENAR sesuai folder lo */
+    background-image: url('../image/Wallpaper.png'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Biar background stay pas discroll */
+    height: 100vh;
+    width: 100%;
+    
+    /* Pengaturan Posisi Konten (Di Kiri) */
+    display: flex;
+    justify-content: flex-start; 
+    align-items: center; 
+    
+    overflow-x: hidden; 
+}
+
+/* --- 2. WADAH KONTEN UTAMA --- */
+.content-container {
+    margin-left: 8%; /* Jarak dari kiri layar laptop */
+    max-width: 550px; 
+    text-align: left;
+    padding: 20px;
+    
+    /* Animasi masuk biar halus */
+    animation: fadeIn 1.5s ease-out;
+}
+
+/* --- 3. TYPOGRAPHY (GAYA HURUF) --- */
+.main-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: 4rem;
+    color: #5e5a9e; 
+    line-height: 1.1;
+    margin-bottom: 5px;
+}
+
+.sub-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.8rem;
+    color: #5e5a9e;
+    margin-bottom: 20px;
+}
+
+.body-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    color: #7a7799; 
+    line-height: 1.6;
+    margin-bottom: 35px;
+    font-weight: 500;
+}
+
+/* --- 4. STYLE TOMBOL (Mulai & Kirim) --- */
+.btn-mulai, .btn-submit {
+    display: inline-block;
+    padding: 15px 35px;
+    background-color: #FF4081; /* Warna Pink */
+    color: white;
+    text-decoration: none;
+    font-size: 1.3rem;
+    border-radius: 50px;
+    box-shadow: 0 5px 15px rgba(255, 64, 129, 0.4);
+    border: 3px solid white;
+    cursor: pointer;
+    font-weight: 600;
+    font-family: 'Fredoka One', cursive;
+    transition: transform 0.2s;
+}
+
+.btn-mulai:hover, .btn-submit:hover {
+    background-color: #e91e63;
+    transform: scale(1.05); /* Membesar pas disentuh */
+}
+
+/* --- 5. STYLE FORM INPUT (KOTAK JAWABAN) --- */
+.input-jawaban {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2rem;
+    border-radius: 15px;
+    border: 3px solid #ccc; /* List abu-abu */
+    outline: none;
+    margin-bottom: 15px;
+    font-family: 'Poppins', sans-serif;
+    transition: 0.3s;
+}
+
+.input-jawaban:focus {
+    border-color: #FF4081; /* Pas diklik jadi Pink */
+    box-shadow: 0 0 10px rgba(255, 64, 129, 0.3);
+}
+
+/* Group Tombol (Biar Sejajar Kirim & Batal) */
+.button-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/* Tombol Batal (Polos) */
+.btn-batal {
+    background: transparent;
+    border: 2px solid #7a7799;
+    color: #7a7799;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+}
+
+.btn-batal:hover {
+    background: #7a7799;
+    color: white;
+}
+
+/* Teks Error (Kalau Salah Jawab) */
+.error-text {
+    color: #d63031; /* Merah */
+    font-weight: bold;
+    margin-bottom: 15px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 5px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+/* --- 6. ANIMASI KHUSUS --- */
+
+/* Animasi Muncul Pelan (Fade In) */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+/* Animasi GETAR (Shake) kalau Salah */
+.shake {
+    animation: shake 0.5s;
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+/* --- 7. RESPONSIF HP (Layar Kecil) --- */
+@media (max-width: 768px) {
+    
+    body {
+        /* Di HP, konten kita taruh di tengah */
+        justify-content: center; 
+        align-items: center;
+    }
+
+    .content-container {
+        margin-left: 0; /* Hapus margin kiri */
+        width: 90%; /* Lebar kotak 90% dari layar HP */
+        text-align: center; /* Teks jadi rata tengah */
+        
+        /* Kotak Kaca Transparan (Glassmorphism) */
+        background: rgba(255, 255, 255, 0.85); 
+        backdrop-filter: blur(8px);
+        border-radius: 20px;
+        padding: 30px 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .main-title {
+        font-size: 2.5rem; /* Ukuran font judul dikecilin */
+    }
+
+    .sub-title {
+        font-size: 1.4rem;
+    }
+
+    .body-text {
+        font-size: 0.95rem; /* Font paragraf dikecilin dikit */
+        color: #555; /* Gelapin dikit biar kontras */
+        margin-bottom: 25px;
+    }
+
+    .button-group {
+        justify-content: center; /* Tombol rata tengah di HP */
+    }
+}
+
+/* =========================================
+   STYLE KHUSUS HALAMAN SPESIAL (special.html)
+   ========================================= */
+
+/* Background Halaman Ini */
+.special-page-body {
+    /* Pastikan kamu punya gambar background ini di folder image! */
+    background-image: url('../image/page2.png'); /* Sesuaikan nama file background kamu */
+    background-size: cover; 
+    background-position: center;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Layout Kiri-Kanan */
+.special-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 85%;
+    max-width: 1100px;
+    padding: 20px;
+}
+
+/* Teks Kiri */
+.text-section {
+    flex: 1;
+    padding-right: 50px;
+}
+
+.text-section p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.8rem;
+    color: #5a5a8f; /* Warna Ungu Kalem */
+    font-weight: 600;
+    line-height: 1.5;
+    text-align: left;
+}
+
+/* Foto Kanan */
+.photo-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+/* Bingkai Lingkaran Besar */
+.big-circle-frame {
+    width: 380px;
+    height: 380px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 10px solid #aedee8; /* List Biru Muda */
+    box-shadow: 0 15px 35px rgba(90, 90, 143, 0.2);
+    background: white; /* Jaga-jaga kalau transparan */
+}
+
+.big-circle-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Animasi Masuk */
+.fade-in-left { animation: fadeInLeft 1.2s ease-out; }
+.fade-in-right { animation: fadeInRight 1.2s ease-out; }
+
+@keyframes fadeInLeft {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeInRight {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* Responsif HP */
+@media (max-width: 900px) {
+    .special-container {
+        flex-direction: column-reverse; /* Foto jadi di atas */
+        text-align: center;
+    }
+    .text-section {
+        padding-right: 0;
+        padding-top: 20px;
+    }
+    .text-section p {
+        font-size: 1.2rem;
+        text-align: center;
+        background: rgba(255,255,255,0.7); /* Biar kebaca di HP */
+        padding: 10px;
+        border-radius: 10px;
+    }
+    .big-circle-frame {
+        width: 250px;
+        height: 250px;
+    }
+}
+
+/* =========================================
+   TAMBAHAN STYLE UNTUK TOMBOL BARU
+   ========================================= */
+
+/* Gaya Tombol "Moment Selanjutnya" */
+.btn-next-moment {
+    display: inline-block;
+    margin-top: 30px; /* Kasih jarak dari teks di atasnya */
+    padding: 12px 35px;
+    background-color: #FF4081; /* Warna Pink Cerah (Senada) */
+    color: white;
+    text-decoration: none; /* Ilangin garis bawah link */
+    font-size: 1.2rem;
+    border-radius: 50px; /* Bentuk bulat lonjong */
+    box-shadow: 0 5px 15px rgba(255, 64, 129, 0.4); /* Bayangan pink */
+    border: 3px solid white; /* List putih biar pop-up */
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+/* Efek pas kursor diarahkan ke tombol */
+.btn-next-moment:hover {
+    background-color: #e91e63; /* Warna jadi agak gelap */
+    transform: scale(1.05) translateY(-3px); /* Membesar dan naik dikit */
+    box-shadow: 0 8px 20px rgba(255, 64, 129, 0.6);
+}
+
+/* --- UPDATE RESPONSIF HP BIAR TOMBOLNYA RAPI --- */
+/* Tambahkan ini di dalam media query (max-width: 900px) yang sudah ada di paling bawah */
+
+@media (max-width: 900px) {
+    /* ... (kode responsif sebelumnya biarkan saja) ... */
+
+    /* Tambahan untuk tombol di HP */
+    .btn-next-moment {
+        margin-top: 20px;
+        font-size: 1rem; 
+        padding: 10px 25px;
+    }
+}
+
+/* =========================================
+   STYLE KHUSUS HALAMAN spesial2(Page 3)
+   ========================================= */
+
+.moment-page-body {
+    /* Pastikan nama filenya '2.jpg' */
+    background-image: url('../image/wallpaper3.png'); 
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* KITA MODIFIKASI SEDIKIT TAMPILAN RESPONSIF BIAR RAPI */
+@media (max-width: 900px) {
+    /* Khusus di halaman moment, urutannya dibalik lagi pas di HP */
+    /* Biar foto tetep di atas, teks di bawah */
+    .moment-page-body .special-container {
+        flex-direction: column; 
+    }
+    
+    .moment-page-body .text-section {
+        padding-left: 0 !important; /* Reset padding */
+        text-align: center !important; /* Teks jadi tengah */
+        padding-top: 20px;
+    }
+}
+
+/* =========================================
+   STYLE (lastpage.html)
+   ========================================= */
+.lastpage-body {
+    /* Pastikan nama file backgroundnya benar */
+    background-image: url('../image/lastwallpaper.png'); 
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Styling Teks Warna-Warni */
+.final-small-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    color: #FF8BA7; /* Pink kalem */
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.final-big-text {
+    font-family: 'Fredoka One', cursive; /* Font judul bulat */
+    font-size: 3.5rem;
+    color: #7c73a8; /* Ungu tua */
+    line-height: 1.2;
+    margin-bottom: 5px;
+}
+
+.final-name-text {
+    font-family: 'Fredoka One', cursive;
+    font-size: 4rem;
+    color: #FF8BA7; /* Pink cerah */
+    margin-top: 10px;
+}
+
+/* Responsif HP */
+@media (max-width: 900px) {
+    .lastpage-body .special-container {
+        flex-direction: column;
+    }
+    .lastpage-body .text-section {
+        padding-left: 0 !important;
+        text-align: center !important;
+        padding-top: 30px;
+    }
+    .final-big-text { font-size: 2.5rem; }
+    .final-name-text { font-size: 3rem; }
+}
+
+/* =========================================
+   MEDIA QUERY UNTUK TAMPILAN HP 
+   ========================================= */
+@media (max-width: 900px) {
+
+    /* 1. Ubah wadah utama jadi tumpuk ke bawah */
+    .special-container {
+        flex-direction: column; 
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        padding: 40px 20px;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    /* 2. Atur ulang bagian FOTO */
+    .photo-section {
+        
+        
+        
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+        flex: 0 0 auto;
+        width: 100%;
+    }
+
+    /* 3. Atur ulang bagian TEKS */
+    .text-section {
+     
+
+        /* Reset settingan layout desktop */
+        padding-left: 0 !important;
+        margin-left: 0 !important;
+        text-align: center !important;
+        width: 100%;
+        min-width: auto;
+        
+        /* Tambahin delay dikit */
+        animation-delay: 0.3s; 
+    }
+
+    /* 4. Penyesuaian Ukuran Font & Bingkai di HP */
+    .text-section p {
+        font-size: 1.1rem;
+        padding: 0 10px;
+    }
+    .final-big-text {
+        font-size: 2.5rem;
+    }
+    .final-name-text {
+        font-size: 3rem;
+    }
+    .big-circle-frame {
+        width: 240px;
+        height: 240px;
+        border-width: 8px;
+    }
+}
